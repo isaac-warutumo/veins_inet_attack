@@ -1,0 +1,73 @@
+file 3636 1715027674                                            
+version 2
+run plain-0-20240403-23:50:39-6652
+attr configname plain
+attr datetime 20240403-23:50:39
+attr experiment plain
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Scenario
+attr processid 6652
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config *.node[*].numApps 1
+config *.node[*].app[0].typename "\"vanetattackpackage.veins_inet.VeinsInetSampleApplication\""
+config *.node[*].app[0].interface "\"wlan0\""
+config *.node[*].wlan[0].opMode "\"p\""
+config *.node[*].wlan[0].radio.typename "\"Ieee80211DimensionalRadio\""
+config *.node[*].wlan[0].radio.bandName "\"5.9 GHz\""
+config *.node[*].wlan[0].radio.channelNumber 3
+config *.node[*].wlan[0].radio.transmitter.power 20mW
+config *.node[*].wlan[0].radio.bandwidth "10 MHz"
+config *.node[*].wlan[*].radio.antenna.mobility.typename "\"AttachedMobility\""
+config *.node[*].wlan[*].radio.antenna.mobility.mobilityModule "\"^.^.^.^.mobility\""
+config *.node[*].wlan[*].radio.antenna.mobility.offsetX -2.5m
+config *.node[*].wlan[*].radio.antenna.mobility.offsetZ 1.5m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxX 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxY 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMinZ 0m
+config *.node[*].wlan[*].radio.antenna.mobility.constraintAreaMaxZ 0m
+config *.node[*].ipv4.configurator.typename "\"HostAutoConfigurator\""
+config *.node[*].ipv4.configurator.interfaces "\"wlan0\""
+config *.node[*].ipv4.configurator.mcastGroups "\"224.0.0.1\""
+config *.node[*].mobility.typename "\"VeinsInetMobility\""
+config *.manager.updateInterval 0.1s
+config *.manager.host "\"localhost\""
+config *.manager.port 9999
+config *.manager.autoShutdown true
+config *.manager.launchConfig "xmldoc(\"square.launchd.xml\")"
+config *.manager.moduleType "\"vanetattackpackage.veins_inet.VeinsInetCar\""
+config *.physicalEnvironment.config "xmldoc(\"obstacles.xml\")"
+config *.radioMedium.obstacleLoss.typename "\"IdealObstacleLoss\""
+
+vector 0 Scenario.node[0].wlan[0].radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr source radioModeChanged
+attr title "Radio mode, vector"
+0	2903 33 2 2 0.1 0.1 3 0 2 2 4
+vector 1 Scenario.node[0].wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr source radioChannelChanged
+attr title "Radio channel, vector"
+1	2936 11 2 2 0.1 0.1 1 3 3 3 9
+vector 2 Scenario.node[0].wlan[0].radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr source receptionStateChanged
+attr title "Radio reception state, vector"
+2	2947 11 2 2 0.1 0.1 1 1 1 1 1
+vector 3 Scenario.node[0].wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr title "contention window, vector"
+3	2958 156 2 2 0.1 0.1 1 15 15 15 225
+vector 4 Scenario.node[0].app[0] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+4	3114 522 48 48 0.1 4.4 44 0 0 0 0
